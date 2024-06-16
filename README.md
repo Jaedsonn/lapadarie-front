@@ -59,7 +59,7 @@ npm run dev
 
 Se você quiser contribuir com o meu projeto basta seguir os comandos abaixo☺️
 
-1. `git clone https://github.com/Jaedsonn/lapadarie-back.git`
+1. `git clone https://github.com/Jaedsonn/lapadarie-front.git`
 2. `git checkout -b feature/NAME`
 3. Abra um Pull Request explicando o problema resolvido ou o recurso criado, se houver, anexe uma captura de tela das modificações visuais e aguarde a revisão!
 
