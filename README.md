@@ -1,40 +1,166 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" style="font-weight: bold;">Lapadarie</h1>
 
-## Getting Started
+<p align="center">
+ <a href="#tech">Technologies</a> • 
+ <a href="#started">Getting Started</a> • 
+  <a href="#routes">API Endpoints</a> •
+ <a href="#colab">Collaborators</a> •
+ <a href="#contribute">Contribute</a>
+</p>
 
-First, run the development server:
+<p align="center">
+    <b>Projeto de gestão de padaria desenvolvida durante o núcleo-web da empresa de informática Júnir-InfoJr da UFBA. Tem como intuito disponibilizar funcionalidades que facilitem a gestão de comercial, tais como: total de vendas, clientes em fila, total de pães vendidos e etc.</b>
+</p>
+
+<h2 id="technologies">Tecnologias</h2>
+
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+
+<h2 id="started">Vamos rodar o projeto?</h2>
+
+<h3>Prerequisitos</h3>
+
+- [NodeJS](https://github.com/)
+- [Git 2](https://github.com)
+
+<h3>Cloning</h3>
+
+How to clone your project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Jaedsonn/lapadarie-back.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h3>Starting</h3>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+cd project-name
+npm i
+mkdir .env
+npx prisma migrate dev
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+//DENTRO DO ARQUIVO .env DEFINIA: DATABASE_URL="link do seu banco de dados"
+//o banco de dados usado no projeto foi o sqlite
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h2 id="routes">📍 API Endpoints</h2>
 
-## Learn More
+​
+| route               | description                                          
+|----------------------|-----------------------------------------------------
+| <kbd>GET /clientes</kbd>     | Retorna todos os clientes [response details](#get-clientes)
+| <kbd>GET /delete/historico</kbd>     | Retorna um histórico com todos os clientes deletados [request details](#get-historico)
+| <kbd>GET /estatic</kbd>     | Retorna as estátisticas da padaria [response details](#get-estatic)
+| <kbd>POST /register</kbd>     | Cria um novo cliente [response details](#post-register)
+| <kbd>PUT /update/:id</kbd>     | Atualiza o cliente e as estátisticas [response details](#put-client)
+| <kbd>DELETE /delete/historico</kbd>     | excluí um cliente da lista e manda para o histórico [response details](#delete-client)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h3 id="get-clientes">GET /clientes</h3>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**RESPONSE**
+```json
+[
+    {
+        "id": 27,
+        "nome": "Edi",
+        "paesQuant": 6,
+        "precoPaes": 3
+    }
+]
+```
 
-## Deploy on Vercel
+<h3 id="get-historico">GET /delete/historico</h3>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**RESPONSE**
+```json
+[
+    {
+        "id": 27,
+        "nome": "Edi",
+        "paesQuant": 6,
+        "precoPaes": 3
+    }
+]
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h3 id="get-estatic">GET /estatic</h3>
+
+**RESPONSE**
+```json
+{
+    "id": 1,
+    "totalPaes": 43,
+    "totalVendas": 21.5
+}
+```
+
+<h3 id="post-register">POST /register</h3>
+
+**REQUEST**
+```json
+{
+	"nome": "Edi",
+  "paesQuant":6
+}
+```
+**RESPONSE**
+```json
+{
+    "cliente": {
+        "id": 27,
+        "nome": "Edi",
+        "paesQuant": 6,
+        "precoPaes": 3 //valor do pão, por default, é 0,50
+    }
+}}
+```
+
+<h3 id="put-client">PUT /update/:id</h3>
+
+**REQUEST**
+```
+const id: number = Number(req.params.id)
+```
+**RESPONSE**
+```json
+{
+    "id": 27,
+    "nome": "Edi",
+    "paesQuant": 1,
+    "precoPaes": 0.5
+}
+```
+
+<h3 id="delete-client">DELETE /delete/:id</h3>
+
+**REQUEST**
+```
+const id: number = Number(req.params.id)
+```
+**RESPONSE**
+```json
+{
+    "id": 27,
+    "nome": "Edi",
+    "paesQuant": 1,
+    "precoPaes": 0.5
+}
+```
+
+<h2 id="contribute">📫 Contribute</h2>
+
+Se você quiser contribuir com o meu projeto basta seguir os comandos abaixo☺️
+
+1. `git clone https://github.com/Jaedsonn/lapadarie-back.git`
+2. `git checkout -b feature/NAME`
+3. Abra um Pull Request explicando o problema resolvido ou o recurso criado, se houver, anexe uma captura de tela das modificações visuais e aguarde a revisão!
+
+<h3>Documentos que podem ajudar</h3>
+
+[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
