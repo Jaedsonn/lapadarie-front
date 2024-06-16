@@ -54,6 +54,8 @@ cd lapadarie-front
 npm i
 npm run dev
 ```
+Para melhor experiência no projeto, sugiro que também clone o repositório do backend do projeto e roda localmente em sua máquina, para isso 
+<a href="https://github.com/Jaedsonn/lapadarie-back.git">clique aqui</a>
 
 <h2 id="contribute">📫 Contribua!</h2>
 
