@@ -18,7 +18,7 @@ const Historico = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get("http://localhost:4001/delete/historico");
+        const res = await axios.get("https://lapadarie-back.onrender.com/delete/historico");
         const data = res.data;
         setData(data);
         console.log(data);
