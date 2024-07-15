@@ -42,7 +42,7 @@ export const UpdateModal: React.FC<cadastrado> = ({
     setLoading(true);
     try {
       const req = await axios.put(
-        `http://localhost:4001/update/${id}`, //aqui vai a url da nossa API
+        `https://lapadarie-back.onrender.com/update/${id}`, //aqui vai a url da nossa API
         data
       );
       atualizar();

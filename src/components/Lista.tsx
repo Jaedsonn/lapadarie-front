@@ -29,7 +29,7 @@ const Lista = () => {
   //Função para retornar todos os users
   const fetchDados = async () => {
     const res: AxiosResponse = await axios.get(
-      "http://localhost:4001/clientes"
+      "https://lapadarie-back.onrender.com/clientes"
     );
     const data = res.data;
     const pessoas = data.length;
@@ -46,7 +46,7 @@ const Lista = () => {
   const handleGet = async () => {
     try {
       const res: AxiosResponse = await axios.get(
-        "http://localhost:4001/estatic"
+        "https://lapadarie-back.onrender.com/estatic"
       );
       const data = res.data;
       console.log(data);
@@ -63,7 +63,7 @@ const Lista = () => {
     try {
       console.log(id);
       const req = await axios.delete(
-        `http://localhost:4001/delete/${id}` // API teste
+        `https://lapadarie-back.onrender.com/delete/${id}` // API teste
       );
       fetchDados();
     } catch (error) {

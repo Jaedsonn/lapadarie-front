@@ -34,7 +34,7 @@ export const Modal: React.FC<cadastrado> = ({ atualizar}) => {
     setLoading(true);
     try {
       const req = await axios.post(
-        `http://localhost:4001/register`, //aqui vai a url da nossa API
+        `https://lapadarie-back.onrender.com/register`, //aqui vai a url da nossa API
         data
       );
       atualizar();
